@@ -10,6 +10,7 @@
 html {
   scroll-behavior: smooth;
   height: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -62,14 +63,18 @@ body {
 }
 
 .splash-glitch {
-  font-size: 5rem;
+  font-size: clamp(1.8rem, 8vw, 5rem);
   font-weight: 800;
   color: #ffffff;
-  letter-spacing: 10px;
+  letter-spacing: clamp(3px, 1vw, 10px);
   position: relative;
   text-transform: uppercase;
   text-shadow: 0 0 20px rgba(45, 168, 255, 0.5);
   animation: splashPulse 4s infinite alternate;
+  max-width: 90vw;
+  word-wrap: break-word;
+  text-align: center;
+  line-height: 1.2;
 }
 
 @keyframes splashPulse {
@@ -85,14 +90,16 @@ body {
 }
 
 .splash-subtitle {
-  font-size: 1.2rem;
+  font-size: clamp(0.7rem, 2.5vw, 1.2rem);
   color: #8da1c7;
-  letter-spacing: 3px;
+  letter-spacing: clamp(1px, 0.5vw, 3px);
   text-transform: uppercase;
   margin-bottom: 40px;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 1s forwards 0.5s;
+  max-width: 90vw;
+  text-align: center;
 }
 
 @keyframes fadeInUp {
@@ -1507,6 +1514,37 @@ nav {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+}
+
+.availability-block {
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(45, 168, 255, 0.05);
+  border: 1px solid rgba(45, 168, 255, 0.2);
+  padding: 12px 20px;
+  border-radius: 30px;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.availability-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #4effa1;
+  box-shadow: 0 0 10px #4effa1;
+  animation: pulse 2s infinite;
+  flex-shrink: 0;
+}
+
+.availability-text {
+  color: #f3f4f6;
+  font-weight: 500;
+  font-size: 0.95rem;
+  word-break: break-word;
 }
 
 .contact-title {
