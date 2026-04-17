@@ -1829,14 +1829,15 @@ nav {
 @media (max-width: 768px) {
   /* ─ Hamburger visible ─ */
   .hamburger {
-    display: flex;
-    margin-right: auto;
+    display: flex !important;
+    margin-right: auto !important;
+    margin-left: 0 !important;
   }
 
   nav {
-    justify-content: flex-start;
-    align-items: center;
-    padding: 14px 24px;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    padding: 14px 20px !important;
   }
 
   .nav-links {
