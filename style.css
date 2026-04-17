@@ -1829,10 +1829,11 @@ nav {
   /* ─ Hamburger visible ─ */
   .hamburger {
     display: flex;
+    margin-right: auto;
   }
 
   nav {
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     padding: 14px 24px;
   }
