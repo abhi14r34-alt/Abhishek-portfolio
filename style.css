@@ -11,6 +11,7 @@ html {
   scroll-behavior: smooth;
   height: 100%;
   overflow-x: hidden;
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -1041,7 +1042,7 @@ hr::before {
   border-radius: 50%;
   pointer-events: none;
   animation: rippleEffect 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  z-index: 9999;
+  z-index: 999;
   transform: translate(-50%, -50%);
 }
 
@@ -1845,8 +1846,7 @@ nav {
     right: 0;
     bottom: 0;
     background: #020611;
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
+    /* Removed expensive backdrop-filter from mobile for performance */
     flex-direction: column;
     justify-content: center;
     align-items: center;
