@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio</title>
+  <style>
+    #nameImg {
+      text-align: center;
+    }
+
+    a {
+      text-decoration: none;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <!-- Splash Screen -->
+  <div id="splash-screen">
+    <div class="splash-content">
+      <div class="splash-glitch" data-text="WELCOME">WELCOME</div>
+      <p class="splash-subtitle">To The Digital Realm of an Expert Developer</p>
+      <button id="enter-btn" class="enter-btn">
+        <span class="btn-text">INITIALIZE PORTFOLIO</span>
+        <span class="btn-glow"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Content Wrapper (Hidden initially) -->
+  <div id="main-portfolio" style="opacity: 0; pointer-events: none; transition: opacity 1s ease;">
+
+
+
+    <header style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center;">
+      <nav>
+        <a href="#home">HOME</a><a href="#aboutMe">ABOUT ME</a><a href="#experience">EXPERIENCE</a><a
+          href="#projects">PROJECTS</a><a href="#contactme">CONTACT</a>
+      </nav>
+      <div id="home" style="display: flex; width: 100%; justify-content: center; margin-top: 5vh;">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1>ABHISHEK</h1>
+            <h4>FULL-STACK SOFTWARE ENGINEER || TECH LEAD || INNOVATOR</h4>
+            <div class="hero-stats">
+              <div class="stat">
+                <span class="stat-number">4+</span>
+                <span class="stat-label">Yrs Code</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number">15+</span>
+                <span class="stat-label">Projects</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number">10k+</span>
+                <span class="stat-label">Commits</span>
+              </div>
+            </div>
+            <h5>
+              Bridging Biotechnology & Scalable Software Architecture <br />
+              Architecting high-performance systems with Next.js, Node, and Python.
+            </h5>
+          </div>
+          <div class="profile-container">
+            <div class="coin-container">
+              <div class="coin">
+                <div class="coin-face front">
+                  <img src="profile-1.jpg" alt="Photo 1" />
+                </div>
+                <div class="coin-face back">
+                  <img src="profile-2.jpg" alt="Photo 2" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="aboutMe">
+        <h2>ABOUT ME</h2>
+        <p>
+          I am a passionate <strong>Full-Stack Software Engineer</strong> and innovator with a unique foundation in
+          Biotechnology. I thrive at the intersection of complex biological algorithms and scalable software
+          architecture,
+          utilizing programming to build heavy-lifting web applications and data-driven tools.
+          <br><br>
+          Specializing in the MERN stack, Python ecosystems, and cloud deployments, I focus on delivering seamless,
+          low-latency user experiences alongside robust backend APIs. From leading GDGC hackathon squads to architecting
+          high-performance bioinformatics pipelines, I bring an engineering mindset, relentless curiosity, and a drive
+          for
+          writing clean, maintainable code that creates real-world impact.
+        </p>
+      </section>
+
+      <section id="experience">
+        <h2>EXPERIENCE & EDUCATION</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h3>Full-Stack Developer Intern</h3>
+              <span class="date">2025 - Present</span>
+              <p>Architecting scalable microservices utilizing Node.js and Docker. Improved API response metrics by 40%
+                utilizing Redis caching and optimized MongoDB aggregations. Engineered highly interactive frontend
+                components with React and cutting-edge CSS features.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h3>Technical Lead - GDGC</h3>
+              <span class="date">2024 - 2025</span>
+              <p>Led intensive workshops on full-stack web technologies, Git version control, and system design.
+                Mentored
+                over 50 students in deploying scalable applications, sparking a 200% measurable increase in club
+                open-source contributions.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h3>B.Tech Biotechnology</h3>
+              <span class="date">NIT Jalandhar • CGPA: 8.4</span>
+              <p>Merging complex biological sciences with algorithm integration. Deep focus on bioinformatics,
+                application
+                of machine learning mapping biological data, and extensive scientific computing frameworks.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills">
+        <h2>TECHNICAL ARSENAL</h2>
+        <div class="skills-layout">
+          <!-- 3D Skills Cube -->
+          <div class="cube-container">
+            <div class="cube">
+              <div class="face front">
+                <div class="skill-icon">⚛️</div>
+                <div class="skill-name">React & Next</div>
+                <div class="skill-level">Advanced</div>
+              </div>
+              <div class="face back">
+                <div class="skill-icon">🐍</div>
+                <div class="skill-name">Python Engine</div>
+                <div class="skill-level">Expert</div>
+              </div>
+              <div class="face right">
+                <div class="skill-icon">🛠️</div>
+                <div class="skill-name">System Des</div>
+                <div class="skill-level">Intermediate</div>
+              </div>
+              <div class="face left">
+                <div class="skill-icon">🎨</div>
+                <div class="skill-name">UI / UX Core</div>
+                <div class="skill-level">Expert</div>
+              </div>
+              <div class="face top">
+                <div class="skill-icon">⚡</div>
+                <div class="skill-name">JS & Node</div>
+                <div class="skill-level">Advanced</div>
+              </div>
+              <div class="face bottom">
+                <div class="skill-icon">🗄️</div>
+                <div class="skill-name">NoSQL / SQL</div>
+                <div class="skill-level">Intermediate</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skills-breakdown">
+            <div class="skill-bar">
+              <div class="skill-info"><span>React.js / Next.js Frameworks</span><span>95%</span></div>
+              <div class="progress-bar">
+                <div class="progress" data-width="95%"></div>
+              </div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-info"><span>Node.js / Express Backends</span><span>90%</span></div>
+              <div class="progress-bar">
+                <div class="progress" data-width="90%"></div>
+              </div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-info"><span>Python & Data Ecosystems</span><span>88%</span></div>
+              <div class="progress-bar">
+                <div class="progress" data-width="88%"></div>
+              </div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-info"><span>MongoDB / PostgreSQL Auth</span><span>85%</span></div>
+              <div class="progress-bar">
+                <div class="progress" data-width="85%"></div>
+              </div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-info"><span>Cloud Deployment & Architecture</span><span>80%</span></div>
+              <div class="progress-bar">
+                <div class="progress" data-width="80%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2>FEATURED PROJECTS</h2>
+        <div class="project-grid">
+          <div class="project-card">
+            <div class="project-icon">🧬</div>
+            <h3>DNA Sequence Analyzer</h3>
+            <p>Architected a high-performance bioinformatics engine. Developed robust algorithms for GC content
+              calculation, optimal codon identification, and sequence alignment utilizing sophisticated sliding window
+              techniques.</p>
+            <div class="tech-stack"><span class="tech-badge">Python</span><span class="tech-badge">NumPy</span><span
+                class="tech-badge">Pandas</span></div>
+          </div>
+          <div class="project-card">
+            <div class="project-icon">⚡</div>
+            <h3>Real-time Collab Space</h3>
+            <p>Built a scalable real-time collaborative code editor using WebSockets. Implemented conflict resolution
+              algorithms, operational transformation fundamentals, and highly secure JWT-based socket authentication.
+            </p>
+            <div class="tech-stack"><span class="tech-badge">React</span><span class="tech-badge">Node.js</span><span
+                class="tech-badge">Socket.io</span></div>
+          </div>
+          <div class="project-card">
+            <div class="project-icon">🦠</div>
+            <h3>Growth Vector Simulator</h3>
+            <p>Engineered a predictive data visualization software modeling bacterial exponential and stationary growth
+              phases dynamically under varying environmental stress parameters utilizing canvas APIs.</p>
+            <div class="tech-stack"><span class="tech-badge">Three.js</span><span
+                class="tech-badge">JavaScript</span><span class="tech-badge">Chart.js</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="achievements">
+        <h2>AWARDS & MILESTONES</h2>
+        <div class="awards-grid">
+          <div class="award-card">
+            <div class="award-icon">🏆</div>
+            <h4>4x GDGC Hackathon Champion</h4>
+            <p>Consistently innovated and deployed fully functional, highly scalable minimum viable products within
+              strict
+              24-hour hackathon constraints, outperforming 50+ competing teams.</p>
+          </div>
+          <div class="award-card">
+            <div class="award-icon">🌟</div>
+            <h4>Major Open Source Contributor</h4>
+            <p>Actively contributing code PRs to massive open-source libraries, isolating critical bugs, and
+              dramatically
+              improving the underlying tooling frameworks utilized by the developer ecosystem.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <section id="contactme">
+        <div class="contact-header">
+          <h2>Let's Connect</h2>
+          <p>Excited to collaborate on new projects</p>
+        </div>
+
+        <div class="contact-layout">
+          <!-- Left Column -->
+          <div class="contact-info">
+            <h3 class="contact-title">Get in Touch</h3>
+            <p class="contact-desc">
+              I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+            </p>
+
+            <!-- Additional Content to fill desktop space beautifully -->
+            <div class="availability-block"
+              style="margin-bottom: 30px; display: flex; align-items: center; gap: 12px; background: rgba(45, 168, 255, 0.05); border: 1px solid rgba(45, 168, 255, 0.2); padding: 12px 20px; border-radius: 30px; width: fit-content;">
+              <span
+                style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #4effa1; box-shadow: 0 0 10px #4effa1; animation: pulse 2s infinite;"></span>
+              <span style="color: #f3f4f6; font-weight: 500; font-size: 0.95rem;">Available for Freelance &
+                Full-time</span>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-icon">📧</div>
+              <div class="contact-details">
+                <span class="contact-label">Email</span>
+                <span class="contact-value">abhi14r34@gmail.com</span>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-icon">🐙</div>
+              <div class="contact-details">
+                <span class="contact-label">GitHub</span>
+                <a href="https://github.com/abhi14r34-alt" target="_blank"
+                  class="contact-value">github.com/abhi14r34-alt</a>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-icon">💼</div>
+              <div class="contact-details">
+                <span class="contact-label">LinkedIn</span>
+                <a href="https://www.linkedin.com/in/abhishek-kumar-201186382?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                  target="_blank" class="contact-value">linkedin.com/in/abhishek</a>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-icon">📱</div>
+              <div class="contact-details">
+                <span class="contact-label">Phone</span>
+                <span class="contact-value">+91 9815687254</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column -->
+          <form class="contact-form" onsubmit="event.preventDefault();">
+            <input type="text" placeholder="Your Name" class="contact-input" required />
+            <input type="email" placeholder="Your Email" class="contact-input" required />
+            <textarea placeholder="Your Message" class="contact-input contact-textarea" required></textarea>
+            <button type="submit" class="contact-submit">Send Message</button>
+          </form>
+        </div>
+      </section>
+
+      <div style="text-align: center; margin: 60px 0 30px;">
+        <a href="#home" class="home-btn">
+          <span>⬆</span> BACK TO TOP
+        </a>
+      </div>
+    </footer>
+    <hr />
+  </div> <!-- End #main-portfolio -->
+</body>
+
+</html>
