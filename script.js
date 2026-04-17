@@ -219,12 +219,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // ── 8. (hover pause removed) ─────────────────────────────
 
-  // ── 9. CLICK RIPPLE ──────────────────────────────────────
+  // ── 9. CLICK RIPPLE (excl. UI buttons) ──────────────────
   document.addEventListener('click', (e) => {
+    // Avoid ripples on nav/buttons to reduce visual noise/stutter
+    if (e.target.closest('nav') || e.target.closest('button')) return;
+
     const r = document.createElement('div');
     r.className = 'ripple';
     r.style.left = e.clientX + 'px';
-    r.style.top = e.clientY + 'px';
+    r.style.top  = e.clientY + 'px';
     document.body.appendChild(r);
     setTimeout(() => r.remove(), 1000);
   });
@@ -232,17 +235,20 @@ document.addEventListener('DOMContentLoaded', function () {
   // ── 10. HAMBURGER MENU TOGGLE ─────────────────────────────
   const hamburger = document.getElementById('hamburger');
   const navLinksContainer = document.getElementById('nav-links');
+  const navBar = document.querySelector('nav');
 
   if (hamburger && navLinksContainer) {
     hamburger.addEventListener('click', () => {
+      const isOpen = navLinksContainer.classList.toggle('open');
       hamburger.classList.toggle('active');
-      navLinksContainer.classList.toggle('open');
-      // Prevent body scroll when menu is open
-      if (navLinksContainer.classList.contains('open')) {
+      
+      if (isOpen) {
         document.body.style.overflow = 'hidden';
+        if (navBar) navBar.style.background = 'transparent';
       } else {
         document.body.style.overflow = '';
         document.body.style.overflowX = 'hidden';
+        if (navBar) navBar.style.background = ''; // reset to CSS default
       }
     });
 
@@ -253,6 +259,7 @@ document.addEventListener('DOMContentLoaded', function () {
         navLinksContainer.classList.remove('open');
         document.body.style.overflow = '';
         document.body.style.overflowX = 'hidden';
+        if (navBar) navBar.style.background = '';
       });
     });
   }
