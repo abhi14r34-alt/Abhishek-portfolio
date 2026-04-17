@@ -3,6 +3,8 @@
 // ============================================================
 
 document.addEventListener('DOMContentLoaded', function () {
+  // Lock scroll on load for splash screen
+  document.body.classList.add('no-scroll');
 
   // ── 0. SPLASH SCREEN ENTER ────────────────────────────────
   const splashScreen = document.getElementById('splash-screen');
@@ -20,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
       mainPortfolio.style.pointerEvents = 'auto';
 
       // Re-enable scrolling
-      document.body.style.overflowY = 'auto';
+      document.body.classList.remove('no-scroll');
 
       // Remove splash from DOM after transition
       setTimeout(() => {
@@ -243,11 +245,10 @@ document.addEventListener('DOMContentLoaded', function () {
       hamburger.classList.toggle('active');
       
       if (isOpen) {
-        document.body.style.overflow = 'hidden';
+        document.body.classList.add('no-scroll');
         if (navBar) navBar.style.background = 'transparent';
       } else {
-        document.body.style.overflow = '';
-        document.body.style.overflowX = 'hidden';
+        document.body.classList.remove('no-scroll');
         if (navBar) navBar.style.background = ''; // reset to CSS default
       }
     });
@@ -257,8 +258,7 @@ document.addEventListener('DOMContentLoaded', function () {
       link.addEventListener('click', () => {
         hamburger.classList.remove('active');
         navLinksContainer.classList.remove('open');
-        document.body.style.overflow = '';
-        document.body.style.overflowX = 'hidden';
+        document.body.classList.remove('no-scroll');
         if (navBar) navBar.style.background = '';
       });
     });
