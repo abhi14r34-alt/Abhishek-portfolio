@@ -33,10 +33,10 @@ document.addEventListener('DOMContentLoaded', function () {
   function updateBackground() {
     const h = new Date().getHours();
     const g =
-      h < 6  ? 'linear-gradient(135deg, #020611 0%, #0a1628 50%, #070e1e 100%)' :
-      h < 12 ? 'linear-gradient(135deg, #020611 0%, #06122b 50%, #0b1e3a 100%)' :
-      h < 18 ? 'linear-gradient(135deg, #060a14 0%, #0b2040 50%, #06122b 100%)' :
-               'linear-gradient(135deg, #020611 0%, #0a1628 50%, #070e1e 100%)';
+      h < 6 ? 'linear-gradient(135deg, #020611 0%, #0a1628 50%, #070e1e 100%)' :
+        h < 12 ? 'linear-gradient(135deg, #020611 0%, #06122b 50%, #0b1e3a 100%)' :
+          h < 18 ? 'linear-gradient(135deg, #060a14 0%, #0b2040 50%, #06122b 100%)' :
+            'linear-gradient(135deg, #020611 0%, #0a1628 50%, #070e1e 100%)';
     document.body.style.backgroundImage = g;
   }
   updateBackground();
@@ -55,8 +55,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     document.body.prepend(canvas);
 
-    const scene    = new THREE.Scene();
-    const camera   = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 1, 800);
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 1, 800);
     camera.position.z = 1;
     camera.rotation.x = Math.PI / 2;
 
@@ -66,23 +66,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* — background stars — */
     const STAR_COUNT = 6000;
-    const starPos  = new Float32Array(STAR_COUNT * 3);
+    const starPos = new Float32Array(STAR_COUNT * 3);
     for (let i = 0; i < STAR_COUNT * 3; i++)
       starPos[i] = (Math.random() - 0.5) * 600;
-    const starGeo  = new THREE.BufferGeometry();
+    const starGeo = new THREE.BufferGeometry();
     starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
-    const starMat  = new THREE.PointsMaterial({ color: 0xaaaaff, size: 0.55, transparent: true, opacity: 0.9 });
-    const stars    = new THREE.Points(starGeo, starMat);
+    const starMat = new THREE.PointsMaterial({ color: 0xaaaaff, size: 0.55, transparent: true, opacity: 0.9 });
+    const stars = new THREE.Points(starGeo, starMat);
     scene.add(stars);
 
     /* — shooting stars — */
     const SHOOT_COUNT = 12;
-    const shootPos   = new Float32Array(SHOOT_COUNT * 3);
+    const shootPos = new Float32Array(SHOOT_COUNT * 3);
     for (let i = 0; i < SHOOT_COUNT * 3; i++)
       shootPos[i] = (Math.random() - 0.5) * 600;
-    const shootGeo   = new THREE.BufferGeometry();
+    const shootGeo = new THREE.BufferGeometry();
     shootGeo.setAttribute('position', new THREE.BufferAttribute(shootPos, 3));
-    const shootMat   = new THREE.PointsMaterial({ color: 0xffffff, size: 2.2, transparent: true, opacity: 0.95 });
+    const shootMat = new THREE.PointsMaterial({ color: 0xffffff, size: 2.2, transparent: true, opacity: 0.95 });
     const shootStars = new THREE.Points(shootGeo, shootMat);
     scene.add(shootStars);
 
@@ -100,12 +100,12 @@ document.addEventListener('DOMContentLoaded', function () {
       // race shooting stars diagonally
       const shp = shootGeo.attributes.position.array;
       for (let i = 0; i < SHOOT_COUNT * 3; i += 3) {
-        shp[i]   -= 1.5 + Math.random() * 1;
-        shp[i+1] -= 1.5 + Math.random() * 0.8;
-        if (shp[i+1] < -300 || shp[i] < -300) {
-          shp[i]   = (Math.random() - 0.5) * 600;
-          shp[i+1] = 300 + Math.random() * 100;
-          shp[i+2] = (Math.random() - 0.5) * 200;
+        shp[i] -= 1.5 + Math.random() * 1;
+        shp[i + 1] -= 1.5 + Math.random() * 0.8;
+        if (shp[i + 1] < -300 || shp[i] < -300) {
+          shp[i] = (Math.random() - 0.5) * 600;
+          shp[i + 1] = 300 + Math.random() * 100;
+          shp[i + 2] = (Math.random() - 0.5) * 200;
         }
       }
       shootGeo.attributes.position.needsUpdate = true;
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const p = document.createElement('div');
     p.className = 'particle';
     p.style.left = Math.random() * 100 + '%';
-    p.style.top  = Math.random() * 100 + '%';
+    p.style.top = Math.random() * 100 + '%';
     p.style.animationDelay = Math.random() * 20 + 's';
     particlesContainer.appendChild(p);
   }
@@ -183,9 +183,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const barObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        const bar      = entry.target;
+        const bar = entry.target;
         const progress = bar.querySelector('.progress');
-        const target   = progress ? progress.getAttribute('data-width') : null;
+        const target = progress ? progress.getAttribute('data-width') : null;
         if (target) {
           bar.classList.add('animate-in');
           setTimeout(() => { progress.style.width = target; }, 100);
@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // ── 7. MOUSE PARALLAX ON HERO ────────────────────────────
   document.addEventListener('mousemove', (e) => {
-    const mx = e.clientX / innerWidth  - 0.5;
+    const mx = e.clientX / innerWidth - 0.5;
     const my = e.clientY / innerHeight - 0.5;
 
     const heroText = document.querySelector('.hero-text');
@@ -224,13 +224,41 @@ document.addEventListener('DOMContentLoaded', function () {
     const r = document.createElement('div');
     r.className = 'ripple';
     r.style.left = e.clientX + 'px';
-    r.style.top  = e.clientY + 'px';
+    r.style.top = e.clientY + 'px';
     document.body.appendChild(r);
     setTimeout(() => r.remove(), 1000);
   });
 
-  // ── 10. SMOOTH NAV SCROLL ────────────────────────────────
-  document.querySelectorAll('nav a[href^="#"]').forEach(a => {
+  // ── 10. HAMBURGER MENU TOGGLE ─────────────────────────────
+  const hamburger = document.getElementById('hamburger');
+  const navLinksContainer = document.getElementById('nav-links');
+
+  if (hamburger && navLinksContainer) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinksContainer.classList.toggle('open');
+      // Prevent body scroll when menu is open
+      if (navLinksContainer.classList.contains('open')) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+        document.body.style.overflowX = 'hidden';
+      }
+    });
+
+    // Close menu when a link is clicked
+    navLinksContainer.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinksContainer.classList.remove('open');
+        document.body.style.overflow = '';
+        document.body.style.overflowX = 'hidden';
+      });
+    });
+  }
+
+  // ── 11. SMOOTH NAV SCROLL ────────────────────────────────
+  document.querySelectorAll('.nav-links a[href^="#"]').forEach(a => {
     a.addEventListener('click', (e) => {
       e.preventDefault();
       const target = document.getElementById(a.getAttribute('href').slice(1));
@@ -238,10 +266,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // ── 11. NAV ACTIVE LINK HIGHLIGHT ON SCROLL (OPTIMIZED) ──
-  const navLinks = document.querySelectorAll('nav a[href^="#"]');
-  const sectionIds = ['home','aboutMe','experience','skills','projects','achievements','contactme'];
-  
+  // ── 12. NAV ACTIVE LINK HIGHLIGHT ON SCROLL (OPTIMIZED) ──
+  const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+  const sectionIds = ['home', 'aboutMe', 'experience', 'skills', 'projects', 'achievements', 'contactme'];
+
   const navObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -256,5 +284,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const el = document.getElementById(id);
     if (el) navObserver.observe(el);
   });
+
+  // ── 13. DISABLE PARALLAX ON TOUCH DEVICES ────────────────
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  if (isTouchDevice) {
+    // Remove mouse parallax on hero text (can cause jank on touch)
+    const heroText = document.querySelector('.hero-text');
+    if (heroText) heroText.style.transform = 'none';
+  }
 
 });
