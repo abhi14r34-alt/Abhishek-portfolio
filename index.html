@@ -23,7 +23,7 @@
   <!-- Splash Screen -->
   <div id="splash-screen">
     <div class="splash-content">
-      <div class="splash-glitch" data-text="WELCOME">WELCOME</div>
+      <div class="splash-glitch" data-text="WELCOME">Hi I am Abhishek, WELCOME</div>
       <p class="splash-subtitle">To The Digital Realm of an Expert Developer</p>
       <button id="enter-btn" class="enter-btn">
         <span class="btn-text">INITIALIZE PORTFOLIO</span>
@@ -37,12 +37,19 @@
 
 
 
-    <header style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center;">
+    <header>
       <nav>
-        <a href="#home">HOME</a><a href="#aboutMe">ABOUT ME</a><a href="#experience">EXPERIENCE</a><a
-          href="#projects">PROJECTS</a><a href="#contactme">CONTACT</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+        <div class="nav-links" id="nav-links">
+          <a href="#home">HOME</a><a href="#aboutMe">ABOUT ME</a><a href="#experience">EXPERIENCE</a><a
+            href="#projects">PROJECTS</a><a href="#contactme">CONTACT</a>
+        </div>
       </nav>
-      <div id="home" style="display: flex; width: 100%; justify-content: center; margin-top: 5vh;">
+      <div id="home" class="hero-wrapper">
         <div class="hero-content">
           <div class="hero-text">
             <h1>ABHISHEK</h1>
@@ -332,7 +339,7 @@
         </div>
       </section>
 
-      <div style="text-align: center; margin: 60px 0 30px;">
+      <div class="back-to-top-wrapper">
         <a href="#home" class="home-btn">
           <span>⬆</span> BACK TO TOP
         </a>
