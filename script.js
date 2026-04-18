@@ -179,24 +179,41 @@ document.addEventListener('DOMContentLoaded', function () {
     update() {
       if (window.earthMode) {
         let t = (Date.now() - window.earthStartTime) * 0.0005; // Spin speed
-        
-        // Fully responsive radius mapping
-        let r = Math.min(window.innerWidth, window.innerHeight) * 0.4;
-        if (r > 400) r = 400; // Cap at giant size on large displays
-        
+
+        // Fully responsive radius mapping (Upscaled!)
+        let r = Math.min(window.innerWidth, window.innerHeight) * 0.45;
+        if (r > 500) r = 500; // Cap at colossal size on massive displays
+
         let rotTheta = this.theta - t - Math.PI * 0.5; // Offset pointing exactly at India mapping
 
         let sphX = r * Math.sin(this.phi) * Math.cos(rotTheta);
         let sphY = r * Math.sin(this.phi) * Math.sin(rotTheta);
         let sphZ = r * Math.cos(this.phi);
-        
+
         // Responsive camera focal length proportional to dynamic radius
-        let cameraDist = r * 2.0; 
-        let persp = cameraDist / (cameraDist + sphZ); 
+        let cameraDist = r * 2.0;
+        let persp = cameraDist / (cameraDist + sphZ);
 
 
         let targetX = window.earthCenter.x + sphX * persp;
         let targetY = window.earthCenter.y + sphY * persp;
+
+        // --- Interactive Hover Repulsion on 3D Sphere ---
+        let mx = mouse.x - this.x;
+        let my = mouse.y - this.y;
+        let distance = Math.sqrt(mx * mx + my * my);
+        if (distance < mouse.radius) {
+          this.glow += (0.4 - this.glow) * 0.1;
+          let forceDirX = mx / distance;
+          let forceDirY = my / distance;
+          let force = (mouse.radius - distance) / mouse.radius;
+
+          // Repel outward from target by calculating bounce offsets based on hover
+          targetX -= forceDirX * force * this.density * 5;
+          targetY -= forceDirY * force * this.density * 5;
+        } else {
+          this.glow *= 0.85; // Faster decay for sphere to look pristine
+        }
 
         this.x += (targetX - this.x) * 0.1;
         this.y += (targetY - this.y) * 0.1;
@@ -678,17 +695,31 @@ document.addEventListener('DOMContentLoaded', function () {
   const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
   const sectionIds = ['home', 'aboutMe', 'experience', 'skills', 'projects', 'achievements', 'contactme'];
 
+  // Map section IDs to the exact text you want in the background
+  const sectionNames = {
+    'home': 'HOME',
+    'aboutMe': 'ABOUT ME',
+    'experience': 'EXPERIENCE',
+    'skills': 'TECHNICAL ARSENAL',
+    'projects': 'PROJECTS',
+    'achievements': 'AWARDS',
+    'contactme': 'CONTACT'
+  };
+
   const navObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
+        const id = entry.target.id;
+        
+        // Update nav active state
         navLinks.forEach(a => {
-          const isActive = a.getAttribute('href') === '#' + entry.target.id;
-          a.classList.toggle('active', isActive);
-          if (isActive) {
-            // Update particle background text to match section
-            updateParticleText(a.textContent);
-          }
+          a.classList.toggle('active', a.getAttribute('href') === '#' + id);
         });
+
+        // Always update background text if we have a mapping
+        if (sectionNames[id]) {
+          updateParticleText(sectionNames[id]);
+        }
       }
     });
   }, { threshold: 0.4 });
