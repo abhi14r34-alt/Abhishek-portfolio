@@ -179,13 +179,20 @@ document.addEventListener('DOMContentLoaded', function () {
     update() {
       if (window.earthMode) {
         let t = (Date.now() - window.earthStartTime) * 0.0005; // Spin speed
-        let r = 400; // Massively Giant Earth sphere radius
+        
+        // Fully responsive radius mapping
+        let r = Math.min(window.innerWidth, window.innerHeight) * 0.4;
+        if (r > 400) r = 400; // Cap at giant size on large displays
+        
         let rotTheta = this.theta - t - Math.PI * 0.5; // Offset pointing exactly at India mapping
 
         let sphX = r * Math.sin(this.phi) * Math.cos(rotTheta);
         let sphY = r * Math.sin(this.phi) * Math.sin(rotTheta);
         let sphZ = r * Math.cos(this.phi);
-        let persp = 800 / (800 + sphZ); // Pulled 3D perspective camera back to handle giant globe
+        
+        // Responsive camera focal length proportional to dynamic radius
+        let cameraDist = r * 2.0; 
+        let persp = cameraDist / (cameraDist + sphZ); 
 
 
         let targetX = window.earthCenter.x + sphX * persp;
